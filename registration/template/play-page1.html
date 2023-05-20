@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wednesday</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans&family=Heebo&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,100&display=swap');
+    * {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        scroll-behavior: smooth;
+        box-sizing: border-box;
+        scroll-padding-top: 2rem;
+    }
+    
+     :root {
+        --main-color: #ff512f;
+        --hover-color: hsl(37, 94%, 57%);
+        --body-color: #1e1e2a;
+        --container-color: #2d2e37;
+        --text-color: #fcfeff;
+    }
+    
+    a {
+        text-decoration: none;
+    }
+    
+    li {
+        list-style: none;
+    }
+    
+    section {
+        padding: 3rem 0 2rem;
+    }
+    
+    img {
+        width: 100%;
+    }
+    
+    .bx {
+        cursor: pointer;
+    }
+    
+    body {
+        background: var(--body-color);
+        color: var(--text-color);
+    }
+    
+    .container {
+        max-width: 1068px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: var(--body-color);
+        z-index: 100;
+    }
+    
+    .nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 0;
+    }
+    
+    .logo {
+        font-size: 1.4rem;
+        color: var(--text-color);
+        font-weight: 600;
+        text-transform: uppercase;
+        margin: 0 auto 0 0;
+    }
+    
+    .logo span {
+        color: var(--main-color);
+    }
+    
+    .dropbtn {
+        background-color: var(--body-color);
+        color: white;
+        padding: 15px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        margin-right: 0px;
+    }
+    
+    .dropbtn:hover,
+    .dropbtn:focus {
+        background-color: var(--container-color);
+    }
+    
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: var(--body-color);
+        min-width: 120px;
+        overflow: auto;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+    
+    .dropdown-content a {
+        color: var(--text-color);
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+    
+    .dropdown a:hover {
+        background-color: var(--main-color);
+    }
+    
+    .show {
+        display: block;
+    }
+    
+    .search-box {
+        max-width: 300px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        column-gap: 0.7rem;
+        padding: 8px 15px;
+        background: var(--container-color);
+        border-radius: 4rem;
+        margin-right: 50px;
+    }
+    
+    .search-box .bx {
+        font-size: 1.1rem;
+        margin-left: 80px;
+    }
+    
+    .search-box .bx:hover {
+        color: var(--main-color);
+    }
+    
+    .search-input {
+        max-width: 100%;
+        border: none;
+        outline: none;
+        color: var(--text-color);
+        background: transparent;
+        font-size: 0.938rem;
+    }
+    
+    .navbar {
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 18px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 2.1rem;
+    }
+    
+    .nav-link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #b7b7b7;
+    }
+    
+    .nav-link:hover,
+    .nav-active {
+        color: var(--text-color);
+        transition: 0.3s all linear;
+        transform: scale(1.1);
+    }
+    
+    .nav-link .bx {
+        font-size: 1.6rem;
+    }
+    
+    .nav-link-title {
+        font-size: 0.6rem;
+    }
+    
+    .home {
+        position: relative;
+        min-height: 470px;
+        display: flex;
+        align-items: center;
+        margin-top: 5rem !important;
+        border-radius: 0.5rem;
+    }
+    
+    .home-img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        object-fit: cover;
+        border-radius: 0.5rem;
+    }
+    
+    .home-text {
+        padding-left: 40px;
+    }
+    
+    .home-title {
+        font-size: 2rem;
+        font-weight: 600;
+    }
+    
+    .home-text p {
+        font-size: 0.938rem;
+        margin: 10px 0 20px;
+        color: var(--main-color);
+    }
+    
+    .watch-btn {
+        display: flex;
+        align-items: center;
+        column-gap: 0.8rem;
+        color: var(--text-color);
+    }
+    
+    .watch-btn .bx {
+        font-size: 23px;
+        background: var(--main-color);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .watch-btn .bx:hover {
+        background-color: var(--hover-color);
+    }
+    
+    .watch-btn span {
+        font-size: 1rem;
+        font-weight: 400;
+    }
+    
+    .button {
+        background-color: #1c87c9;
+        border: none;
+        color: white;
+        padding: 10px 10px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 15px;
+        cursor: pointer;
+        margin-right: 35px;
+        border-radius: 5px;
+    }
+    
+    .button1 {
+        background-color: #1c87c9;
+        border: none;
+        color: white;
+        padding: 10px 10px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 15px;
+        cursor: pointer;
+    }
+    
+    .heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: var(--container-color);
+        padding: 8px 14px;
+        border: 1px solid hsl(200 100% 99% / 5%);
+        margin-bottom: 2rem;
+    }
+    
+    .heading-title {
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+    
+    .content-popular {
+        width: 100%;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        overflow: auto;
+    }
+    
+    .slide {
+        float: left;
+        margin-right: 20px;
+        margin-left: 0px;
+        color: white;
+        width: 247px;
+        height: 300px;
+        background-color: white;
+    }
+    
+    .slide1 {
+        float: left;
+        margin-top: 120px;
+        margin-right: 20px;
+        margin-left: 0px;
+        color: white;
+        width: 247px;
+        height: 300px;
+        background-color: white;
+    }
+    
+    .movie-box {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        overflow: hidden;
+    }
+    
+    .movie-box-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .movie-box .box-text {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 14px;
+        background: linear-gradient(8deg hsl(240 17% 14% / 74%) 14%, hsl(240 17% 14% / 14%) 44%);
+        overflow: hidden;
+    }
+    
+    .movie-title {
+        font-size: 1.1rem;
+        font-weight: 500;
+    }
+    
+    .movie-type {
+        font-size: 0.938rem;
+    }
+    
+    .play-btn {
+        position: absolute;
+        bottom: 0.rem;
+        right: 0.8rem;
+    }
+    
+    .container1 {
+        max-width: 1068px;
+        margin-left: auto;
+        margin-right: auto;
+        width: auto;
+        height: auto;
+        margin-top: 772px;
+    }
+    
+    .heading1 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: var(--container-color);
+        padding: 8px 14px;
+        border: 1px solid hsl(200 100% 99% / 5%);
+        margin-bottom: 2rem;
+    }
+    
+    .movies .heading {
+        padding: 10px 14px;
+    }
+    
+    .slide .movie-box:hover .movie-box-img {
+        transform: scale(1.1);
+        transition: 0.6s;
+    }
+    
+    .slide1 .movie-box:hover .movie-box-img {
+        transform: scale(1.1);
+        transition: 0.6s;
+    }
+    
+    .next-page {
+        margin-top: 825px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .next-btn {
+        background: var(--main-color);
+        padding: 12px 20px;
+        color: var(--text-color);
+        font-weight: 500;
+    }
+    
+    .next-btn:hover {
+        background: var(--hover-color);
+        transition: 0.3s all linear;
+    }
+    
+    .copyright {
+        text-align: center;
+        padding: 20px;
+        margin-top: 50x;
+    }
+    
+    .play-container {
+        position: relative;
+        min-height: 540px;
+        margin-top: 5rem !important;
+    }
+    
+    .play-img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        z-index: -1;
+    }
+    
+    .play-text {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 40px;
+        background: linear-gradient(8deg hsl(240 17% 14% / 74%) 14%, hsl(240 17% 14% / 14%) 44%);
+    }
+    
+    .play-text h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+    
+    .rating {
+        display: flex;
+        align-items: center;
+        column-gap: 2px;
+        font-size: 1.1rem;
+        color: var(--main-color);
+        margin-top: 4px;
+    }
+    
+    .tags {
+        display: flex;
+        align-items: center;
+        column-gap: 8px;
+        margin: 1rem 0;
+    }
+    
+    .tags span {
+        background-color: var(--container-color);
+        padding: 0 4px;
+    }
+    
+    .play-movie {
+        position: absolute;
+        bottom: 18rem;
+        right: 10rem;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background: var(--main-color);
+        font-size: 24px;
+        animation: animate 2s linear infinite;
+    }
+    
+    @keyframes animate {
+        0% {
+            box-shadow: 0 0 0 0 rgba(255, 87, 58, 0.7);
+        }
+        40% {
+            box-shadow: 0 0 0 50px rgb(255, 193, 7, 0);
+        }
+        80% {
+            box-shadow: 0 0 0 50px rgb(255, 193, 7, 0);
+        }
+        100% {
+            box-shadow: 0 0 0 rgb(255, 193, 7, 0);
+        }
+    }
+    
+    .about-movie {
+        margin-top: 2rem;
+    }
+    
+    .about-movie h2 {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: var(--main-color);
+    }
+    
+    .about-movie p {
+        max-width: 600px;
+        font-size: 0.938rem;
+        margin: 10px 0;
+    }
+    
+    .cast-heading {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: var(--main-color);
+    }
+    
+    .cast {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 150px));
+        gap: 1rem;
+    }
+    
+    .cast-img {
+        width: 150px;
+        height: 180px;
+        object-fit: cover;
+        object-position: center;
+    }
+    
+    .download {
+        max-width: 800px;
+        width: 1005;
+        margin: auto;
+        display: grid;
+        justify-content: center;
+        margin-top: 2rem;
+    }
+    
+    .download-title {
+        text-align: center;
+        font-size: 1.4rem;
+        font-weight: 500;
+        margin: 1.6rem 0;
+        color: var(--main-color);
+    }
+    
+    .download-links {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-bottom: 2rem;
+    }
+    
+    .download-links a {
+        text-align: center;
+        background: var(--main-color);
+        padding: 12px 24px;
+        color: var(--body-color);
+        letter-spacing: 1px;
+        font-weight: 500;
+    }
+    
+    .download-links a:hover {
+        background: var(--hover-color);
+    }
+</style>
+
+<body>
+    <script src="main.js"></script>
+
+</body>
+<header>
+    <div class="nav container">
+        <a href="home.html" class="logo">
+            Mov<span>Flix</span>
+        </a>
+
+
+        <div class="search-box">
+            <input type="search" name="" id="search-input" placeholder="Search movies">
+            <i class='bx bx-search-alt'></i>
+        </div>
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">Categories</button>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="#">Action</a>
+                <a href="#">Drama</a>
+                <a href="#">Fantasy</a>
+                <a href="#">Horror</a>
+                <a href="#">Mystery</a>
+                <a href="#">Romantic</a>
+                <a href="#">Thriller</a>
+            </div>
+        </div>
+
+        <script>
+            /* When the user clicks on the button, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    toggle between hiding and showing the dropdown content */
+            function myFunction() {
+                document.getElementById("myDropdown").classList.toggle("show");
+            }
+
+            // Close the dropdown if the user clicks outside of it
+            window.onclick = function(event) {
+                if (!event.target.matches('.dropbtn')) {
+                    var dropdowns = document.getElementsByClassName("dropdown-content");
+                    var i;
+                    for (i = 0; i < dropdowns.length; i++) {
+                        var openDropdown = dropdowns[i];
+                        if (openDropdown.classList.contains('show')) {
+                            openDropdown.classList.remove('show');
+                        }
+                    }
+                }
+            }
+        </script>
+
+
+
+
+    </div>
+
+
+    <div class="navbar">
+        <a href="{%url 'home' %}" class="nav-link nav-active">
+            <i class='bx bxs-home'></i>
+            <span class="nav-link-title">Home</span>
+
+        </a>
+        <a href="#home" class="nav-link">
+            <i class='bx bxs-hot'></i>
+            <span class="nav-link-title">Trending</span>
+
+
+        </a>
+        <a href="#home" class="nav-link">
+            <i class='bx bx-compass'></i>
+            <span class="nav-link-title">Explore</span>
+
+
+        </a>
+        <a href="#home" class="nav-link">
+            <i class='bx bx-tv'></i>
+            <span class="nav-link-title">Movies</span>
+
+
+        </a>
+        <a href="#home" class="nav-link">
+            <i class='bx bx-heart'></i>
+            <span class="nav-link-title">Favourite</span>
+        </a>
+
+
+        <a href="{%url 'logout' %} " class="nav-link">
+            <i class='bx bx-log-out'></i>
+            <span class="nav-link-title">Logout</span>
+
+        </a>
+        <a href="{%url 'signup' %} " class="nav-link">
+            <i class='bx bx-registered'></i>
+            <span class="nav-link-title">Registration</span>
+
+        </a>
+
+
+    </div>
+
+
+
+
+    </div>
+
+
+    </div>
+
+
+</header>
+
+<div class="play-container container">
+    {% load static %}
+    <img src="{% static 'ava1.jpg' %}" alt="" class="play-img">
+    <div class="play-text">
+        <h2>Avatar</h2>
+        <div class="rating">
+            <i class='bx bxs-star'></i>
+            <i class='bx bxs-star'></i>
+            <i class='bx bxs-star'></i>
+            <i class='bx bxs-star'></i>
+            <i class='bx bxs-star-half'></i>
+        </div>
+        <div class="tags">
+            <span>Action</span>
+            <span>Mystery</span>
+            <span>Science Fiction</span>
+            <span>Adventure</span>
+            <span>4K</span>
+
+        </div>
+        <a href="#" class="watch-btn">
+            <i class='bx bxs-right-arrow'></i>
+            <span>Watch the trailer</span>
+
+
+        </a>
+    </div>
+    <i class='bx bxs-right-arrow play-movie'></i>
+
+
+</div>
+<div class="about-movie container">
+    <h2>Avatar</h2>
+    <p> A paraplegic Marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.</p>
+    <h2 class="cast-heading">Movie Cast</h2>
+    <div class="cast">
+        <div class="cast-box">
+            {% load static %}
+            <img src="{% static 'cast-1a.jpg' %}" alt="" class="cast-img">
+            <span class="cast-title">Kate Winslet</span>
+        </div>
+        <div class="cast-box">
+            {% load static %}
+            <img src="{% static 'ava-2a.jpg' %}" alt="" class="cast-img">
+            <span class="cast-title">Sam Worthington</span>
+        </div>
+        <div class="cast-box">
+            {% load static %}
+            <img src="{% static 'cast-3a.jpg' %}" alt="" class="cast-img">
+            <span class="cast-title">Zoe Saldana</span>
+        </div>
+        <div class="cast-box">
+            {% load static %}
+            <img src="{% static 'cast-4a.jpg' %}" alt="" class="cast-img">
+            <span class="cast-title">Sigourney Weaver</span>
+        </div>
+        <div class="cast-box">
+            {% load static %}
+            <img src="{% static 'cast-5a.jpg' %}" alt="" class="cast-img">
+            <span class="cast-title">Michelle Yeoh</span>
+        </div>
+
+
+    </div>
+</div>
+<div class="download">
+    <h2 class="download-title">Download Movies</h2>
+    <div class="download-links">
+        <a href="#">480p</a>
+        <a href="#">720p</a>
+        <a href="#">1080p</a>
+    </div>
+</div>
+
+
+
+<div class="copyright">
+    <p>&#169;All Right Reserved</p>
+</div>
